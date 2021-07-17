@@ -11,30 +11,30 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Holds instances of different
- * API hooks.
+ * Holds and controls instances
+ * of different API hooks.
  */
 
-public class ApiController {
-    private final Map<Plugin, ArmorEquipApi> hooks = new HashMap<>();
+public class HooksController {
+    private final Map<Plugin, ArmorEquipListenable> hooks = new HashMap<>();
 
     /**
-     * Adds a {@link ArmorEquipApi} implementation so that it starts
+     * Adds a {@link ArmorEquipListenable} implementation so that it starts
      * listening for modifications.
      */
 
-    public void hook(Plugin plugin, ArmorEquipApi armorEquipApi) {
+    public void hook(Plugin plugin, ArmorEquipListenable armorEquipApi) {
         hooks.put(plugin, armorEquipApi);
     }
 
     /**
-     * Removes a {@link ArmorEquipApi} implementation so that it stops
+     * Removes a {@link ArmorEquipListenable} implementation so that it stops
      * listening for modifications.
      * <p>
      * NOTE: This method does not need to be called when the plugin disables.
      */
 
-    public void unhook(Plugin plugin, ArmorEquipApi armorEquipApi) {
+    public void unhook(Plugin plugin, ArmorEquipListenable armorEquipApi) {
         hook(plugin, armorEquipApi);
     }
 
@@ -54,10 +54,10 @@ public class ApiController {
         MethodCalculator.Method method = modification.getModificationMethod();
         ItemStack[] modifiedArmor = modification.getModifiedArmor();
 
-        Collection<ArmorEquipApi> apis = hooks.values();
+        Collection<ArmorEquipListenable> apis = hooks.values();
         boolean isWear = method == MethodCalculator.Method.WEAR;
 
-        for (ArmorEquipApi hook : apis) {
+        for (ArmorEquipListenable hook : apis) {
             if (isWear) {
                 hook.onWear(player, modifiedArmor);
 

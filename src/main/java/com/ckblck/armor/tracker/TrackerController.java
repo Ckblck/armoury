@@ -1,7 +1,7 @@
 package com.ckblck.armor.tracker;
 
 import com.ckblck.armor.Bootstrap;
-import com.ckblck.armor.api.ApiController;
+import com.ckblck.armor.api.HooksController;
 import com.ckblck.armor.utils.ArmorModification;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -12,10 +12,10 @@ import java.util.UUID;
 
 public class TrackerController {
     private final Map<UUID, Tracker> trackedPlayers = new HashMap<>();
-    private final ApiController apiController;
+    private final HooksController hooksController;
 
     public TrackerController(Bootstrap bootstrap) {
-        this.apiController = bootstrap.getApiController();
+        this.hooksController = bootstrap.getHooksController();
 
         Bukkit.getOnlinePlayers().forEach(this::track); // Reload compatibility.
     }
@@ -43,7 +43,7 @@ public class TrackerController {
     }
 
     protected void callApi(Player player, ArmorModification modification) {
-        apiController.callHooks(player, modification);
+        hooksController.callHooks(player, modification);
     }
 
 }

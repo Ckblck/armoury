@@ -3,7 +3,7 @@ package com.ckblck.armor.api;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-public interface ArmorEquipApi {
+public interface ArmorEquipListenable {
 
     /**
      * Called when a player
