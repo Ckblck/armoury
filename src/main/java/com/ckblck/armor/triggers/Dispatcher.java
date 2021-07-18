@@ -1,7 +1,10 @@
-package com.ckblck.armor.api;
+package com.ckblck.armor.triggers;
 
+import com.ckblck.armor.triggers.api.ArmorEquipListenable;
+import com.ckblck.armor.triggers.event.PlayerArmorChangeEvent;
 import com.ckblck.armor.utils.ArmorModification;
 import com.ckblck.armor.utils.MethodCalculator;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
@@ -13,9 +16,10 @@ import java.util.Map;
 /**
  * Holds and controls instances
  * of different API hooks.
+ * Events are also dispatched.
  */
 
-public class HooksController {
+public class Dispatcher {
     private final Map<Plugin, ArmorEquipListenable> hooks = new HashMap<>();
 
     /**
@@ -39,8 +43,7 @@ public class HooksController {
     }
 
     /**
-     * Calls every registered hook
-     * as soon as an armor event is triggered.
+     * Dispatches an armor event and calls every {@link ArmorEquipListenable}.
      * <p>
      * NO PLUGIN MUST INVOKE THIS METHOD.
      *
@@ -48,7 +51,18 @@ public class HooksController {
      * @param modification event modification data
      */
 
-    public void callHooks(Player player, ArmorModification modification) {
+    public void dispatch(Player player, ArmorModification modification) {
+        callHooks(player, modification);
+        dispatchEvent(player, modification);
+    }
+
+    private void dispatchEvent(Player player, ArmorModification modification) {
+        PlayerArmorChangeEvent event = new PlayerArmorChangeEvent(player, modification);
+
+        Bukkit.getPluginManager().callEvent(event);
+    }
+
+    private void callHooks(Player player, ArmorModification modification) {
         hooks.keySet().removeIf(plugin -> !plugin.isEnabled());
 
         MethodCalculator.Method method = modification.getModificationMethod();
@@ -66,7 +80,6 @@ public class HooksController {
 
             hook.onRemove(player, modifiedArmor);
         }
-
     }
 
 

@@ -1,9 +1,9 @@
 package com.ckblck.armor;
 
-import com.ckblck.armor.api.HooksController;
 import com.ckblck.armor.listeners.Interceptor;
 import com.ckblck.armor.listeners.JoinQuitListener;
 import com.ckblck.armor.tracker.TrackerController;
+import com.ckblck.armor.triggers.Dispatcher;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Bukkit;
@@ -28,12 +28,12 @@ public class Bootstrap {
 
     private TrackerController trackerController;
     private JoinQuitListener joinQuitListener;
-    private HooksController hooksController;
+    private Dispatcher dispatcher;
 
     public void start() {
         PluginManager pluginManager = Bukkit.getPluginManager();
 
-        hooksController = new HooksController();
+        dispatcher = new Dispatcher();
         trackerController = new TrackerController(this);
         joinQuitListener = new JoinQuitListener(trackerController);
 

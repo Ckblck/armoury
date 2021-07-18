@@ -7,6 +7,7 @@ group 'com.ckblck'
 version '1.0-SNAPSHOT'
 
 java {
+    withSourcesJar()
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 }
