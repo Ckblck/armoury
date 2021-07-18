@@ -1,4 +1,4 @@
-package com.ckblck.armor.utils;
+package com.github.ckblck.armor.utils;
 
 import com.google.common.collect.Sets;
 import org.bukkit.Material;

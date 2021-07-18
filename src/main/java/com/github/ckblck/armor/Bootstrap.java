@@ -1,9 +1,9 @@
-package com.ckblck.armor;
+package com.github.ckblck.armor;
 
-import com.ckblck.armor.listeners.Interceptor;
-import com.ckblck.armor.listeners.JoinQuitListener;
-import com.ckblck.armor.tracker.TrackerController;
-import com.ckblck.armor.triggers.Dispatcher;
+import com.github.ckblck.armor.listeners.Interceptor;
+import com.github.ckblck.armor.listeners.JoinQuitListener;
+import com.github.ckblck.armor.tracker.TrackerController;
+import com.github.ckblck.armor.triggers.Dispatcher;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Bukkit;

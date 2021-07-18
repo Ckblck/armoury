@@ -1,8 +1,8 @@
-package com.ckblck.armor.tracker;
+package com.github.ckblck.armor.tracker;
 
-import com.ckblck.armor.Bootstrap;
-import com.ckblck.armor.triggers.Dispatcher;
-import com.ckblck.armor.utils.ArmorModification;
+import com.github.ckblck.armor.Bootstrap;
+import com.github.ckblck.armor.triggers.Dispatcher;
+import com.github.ckblck.armor.utils.ArmorModification;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 

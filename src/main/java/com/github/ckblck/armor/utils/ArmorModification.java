@@ -1,4 +1,4 @@
-package com.ckblck.armor.utils;
+package com.github.ckblck.armor.utils;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,6 @@
-package com.ckblck.armor.listeners;
+package com.github.ckblck.armor.listeners;
 
-import com.ckblck.armor.tracker.TrackerController;
+import com.github.ckblck.armor.tracker.TrackerController;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

@@ -1,9 +1,9 @@
-package com.ckblck.armor.triggers;
+package com.github.ckblck.armor.triggers;
 
-import com.ckblck.armor.triggers.api.ArmorEquipListenable;
-import com.ckblck.armor.triggers.event.PlayerArmorChangeEvent;
-import com.ckblck.armor.utils.ArmorModification;
-import com.ckblck.armor.utils.MethodCalculator;
+import com.github.ckblck.armor.triggers.api.ArmorEquipListenable;
+import com.github.ckblck.armor.triggers.event.PlayerArmorChangeEvent;
+import com.github.ckblck.armor.utils.ArmorModification;
+import com.github.ckblck.armor.utils.MethodCalculator;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

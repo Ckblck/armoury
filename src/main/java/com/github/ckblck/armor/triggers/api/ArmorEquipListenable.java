@@ -1,4 +1,4 @@
-package com.ckblck.armor.triggers.api;
+package com.github.ckblck.armor.triggers.api;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
