@@ -3,7 +3,7 @@ plugins {
     id 'java-library'
 }
 
-group 'com.ckblck'
+group 'com.github.ckblck'
 version '1.0-SNAPSHOT'
 
 java {
