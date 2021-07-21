@@ -1,12 +1,12 @@
 package com.github.ckblck.armor.triggers;
 
+import com.github.ckblck.armor.tracker.calculation.ArmorModification;
+import com.github.ckblck.armor.tracker.calculation.MethodCalculator;
+import com.github.ckblck.armor.tracker.calculation.piece.ArmorPiece;
 import com.github.ckblck.armor.triggers.api.ArmorEquipListenable;
 import com.github.ckblck.armor.triggers.event.PlayerArmorChangeEvent;
-import com.github.ckblck.armor.utils.ArmorModification;
-import com.github.ckblck.armor.utils.MethodCalculator;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 import java.util.Collection;
@@ -66,7 +66,7 @@ public class Dispatcher {
         hooks.keySet().removeIf(plugin -> !plugin.isEnabled());
 
         MethodCalculator.Method method = modification.getModificationMethod();
-        ItemStack[] modifiedArmor = modification.getModifiedArmor();
+        ArmorPiece[] modifiedArmor = modification.getModifiedArmor();
 
         Collection<ArmorEquipListenable> apis = hooks.values();
         boolean isWear = method == MethodCalculator.Method.WEAR;

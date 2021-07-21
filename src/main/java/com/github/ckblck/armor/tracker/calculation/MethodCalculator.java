@@ -1,5 +1,6 @@
-package com.github.ckblck.armor.utils;
+package com.github.ckblck.armor.tracker.calculation;
 
+import com.github.ckblck.armor.tracker.calculation.piece.ArmorPiece;
 import com.google.common.collect.Sets;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -46,7 +47,11 @@ public class MethodCalculator {
             method = Method.CORRUPT;
         }
 
-        return new ArmorModification(method, modifiedArmor);
+        ArmorPiece[] armorPieces = Arrays.stream(modifiedArmor)
+                .map(ArmorPiece::new)
+                .toArray(ArmorPiece[]::new);
+
+        return new ArmorModification(method, armorPieces);
     }
 
     public Method findMethod(Collection<ItemStack> savedArmor, Collection<ItemStack> currentArmor) {

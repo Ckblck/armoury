@@ -15,10 +15,6 @@ import org.bukkit.plugin.PluginManager;
  * <p>
  * Aimed to provide flexibility
  * as regards library bundling.
- * <p>
- * If you do not wish to use it as an external plugin,
- * you may call the constructor and use the
- * {@link #start()} method instead.
  */
 
 @Getter
@@ -29,6 +25,11 @@ public class Bootstrap {
     private TrackerController trackerController;
     private JoinQuitListener joinQuitListener;
     private Dispatcher dispatcher;
+
+    /**
+     * Starts listening
+     * and dispatching armor events.
+     */
 
     public void start() {
         PluginManager pluginManager = Bukkit.getPluginManager();

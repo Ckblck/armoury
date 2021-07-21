@@ -1,7 +1,7 @@
 package com.github.ckblck.armor.tracker;
 
-import com.github.ckblck.armor.utils.ArmorModification;
-import com.github.ckblck.armor.utils.MethodCalculator;
+import com.github.ckblck.armor.tracker.calculation.ArmorModification;
+import com.github.ckblck.armor.tracker.calculation.MethodCalculator;
 import lombok.Getter;
 import lombok.ToString;
 import org.apache.commons.lang.ArrayUtils;
@@ -56,7 +56,7 @@ public class Tracker {
 
     /**
      * Gets the current armor the player is wearing
-     * and updates it by differencing it {@link #savedArmor}.
+     * and updates it by differencing it with {@link #savedArmor}.
      */
 
     public void updateArmor() {
