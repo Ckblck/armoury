@@ -1,9 +1,10 @@
 package com.github.ckblck.armor;
 
+import com.github.ckblck.armor.hooks.ApiDispatcher;
 import com.github.ckblck.armor.listeners.Interceptor;
 import com.github.ckblck.armor.listeners.JoinQuitListener;
+import com.github.ckblck.armor.listeners.PluginDisableListener;
 import com.github.ckblck.armor.tracker.TrackerController;
-import com.github.ckblck.armor.triggers.Dispatcher;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Bukkit;
@@ -17,14 +18,12 @@ import org.bukkit.plugin.PluginManager;
  * as regards library bundling.
  */
 
-@Getter
 @RequiredArgsConstructor
 public class Bootstrap {
     private final Plugin plugin;
 
-    private TrackerController trackerController;
-    private JoinQuitListener joinQuitListener;
-    private Dispatcher dispatcher;
+    @Getter
+    private ApiDispatcher dispatcher;
 
     /**
      * Starts listening
@@ -34,11 +33,12 @@ public class Bootstrap {
     public void start() {
         PluginManager pluginManager = Bukkit.getPluginManager();
 
-        dispatcher = new Dispatcher();
-        trackerController = new TrackerController(this);
-        joinQuitListener = new JoinQuitListener(trackerController);
+        dispatcher = new ApiDispatcher();
 
-        pluginManager.registerEvents(joinQuitListener, plugin);
+        TrackerController trackerController = new TrackerController(this);
+
+        pluginManager.registerEvents(new JoinQuitListener(trackerController), plugin);
+        pluginManager.registerEvents(new PluginDisableListener(dispatcher), plugin);
 
         new Interceptor(plugin, trackerController);
     }

@@ -1,7 +1,7 @@
 package com.github.ckblck.armor.tracker;
 
-import com.github.ckblck.armor.tracker.calculation.ArmorModification;
-import com.github.ckblck.armor.tracker.calculation.MethodCalculator;
+import com.github.ckblck.armor.tracker.calculation.Method;
+import com.github.ckblck.armor.tracker.calculation.piece.ArmorPiece;
 import lombok.Getter;
 import lombok.ToString;
 import org.apache.commons.lang.ArrayUtils;
@@ -15,15 +15,13 @@ import java.util.Optional;
 import java.util.UUID;
 
 /**
- * Keeps track of the armor of a
- * specific player.
+ * Keeps track of the armor changes
+ * of a specific player.
  */
 
 @ToString
 @Getter
 public class Tracker {
-    public static final MethodCalculator CALCULATOR = new MethodCalculator();
-
     private final UUID player;
     private final TrackerController trackerController;
 
@@ -63,17 +61,12 @@ public class Tracker {
         ItemStack[] savedArmor = getSavedArmor();
         ItemStack[] currentArmor = getCurrentArmor();
 
-        ArmorModification armorModification = CALCULATOR.findModifiedArmor(savedArmor, currentArmor);
-
-        MethodCalculator.Method method = armorModification.getModificationMethod();
-
-        if (method == MethodCalculator.Method.CORRUPT) // May occur due to low TPS.
-            return;
+        ArmorPiece[] armorPieces = Method.findModifiedArmor(savedArmor, currentArmor);
 
         setSavedArmor(currentArmor);
 
         getPlayer().ifPresent(player ->
-                trackerController.callApi(player, armorModification));
+                trackerController.callApi(player, armorPieces));
     }
 
     private void setSavedArmor(ItemStack[] savedArmor) {

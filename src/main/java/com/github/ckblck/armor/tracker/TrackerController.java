@@ -1,8 +1,8 @@
 package com.github.ckblck.armor.tracker;
 
 import com.github.ckblck.armor.Bootstrap;
-import com.github.ckblck.armor.tracker.calculation.ArmorModification;
-import com.github.ckblck.armor.triggers.Dispatcher;
+import com.github.ckblck.armor.hooks.ApiDispatcher;
+import com.github.ckblck.armor.tracker.calculation.piece.ArmorPiece;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -12,7 +12,7 @@ import java.util.UUID;
 
 public class TrackerController {
     private final Map<UUID, Tracker> trackedPlayers = new HashMap<>();
-    private final Dispatcher dispatcher;
+    private final ApiDispatcher dispatcher;
 
     public TrackerController(Bootstrap bootstrap) {
         this.dispatcher = bootstrap.getDispatcher();
@@ -26,7 +26,7 @@ public class TrackerController {
      */
 
     public void track(Player player) {
-        trackedPlayers.computeIfAbsent(player.getUniqueId(), player1 -> new Tracker(player1, this));
+        trackedPlayers.computeIfAbsent(player.getUniqueId(), pl -> new Tracker(pl, this));
     }
 
     /**
@@ -42,8 +42,8 @@ public class TrackerController {
         return trackedPlayers.get(player.getUniqueId());
     }
 
-    protected void callApi(Player player, ArmorModification modification) {
-        dispatcher.dispatch(player, modification);
+    protected void callApi(Player player, ArmorPiece[] modification) {
+        dispatcher.dispatchInternally(player, modification);
     }
 
 }

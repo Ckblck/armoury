@@ -19,7 +19,14 @@ public enum ArmorSlot {
     private final int slotId;
     private final Predicate<Material> condition;
 
-    public static ArmorSlot findByMaterial(Material material) {
+    /**
+     * Gets the slot of a specific material.
+     *
+     * @param material material to get the slot from
+     * @throws IllegalArgumentException if no slot was found
+     */
+
+    public static ArmorSlot findByMaterial(Material material) throws IllegalArgumentException {
         for (ArmorSlot armorSlot : VALUES) {
             boolean meetsCondition = armorSlot.condition.test(material);
 
@@ -32,7 +39,13 @@ public enum ArmorSlot {
         throw new IllegalArgumentException("Could not find ArmorSlot for material: " + material);
     }
 
-    public static ArmorSlot findBySlot(int slot) {
+    /**
+     * Gets the armor slot given a slot id.
+     *
+     * @throws IllegalArgumentException if no slot was found
+     */
+
+    public static ArmorSlot findBySlot(int slot) throws IllegalArgumentException {
         for (ArmorSlot armorSlot : VALUES) {
             boolean sameId = armorSlot.slotId == slot;
 

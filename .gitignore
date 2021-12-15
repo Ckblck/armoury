@@ -117,6 +117,7 @@ run/
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
 
-# Testing
-/src/main/resources/
+# Testing only files
 /src/main/java/com/github/ckblck/armor/Testing.java
+/src/test/
+/src/main/resources
