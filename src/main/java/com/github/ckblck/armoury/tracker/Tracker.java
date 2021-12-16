@@ -1,7 +1,7 @@
-package com.github.ckblck.armor.tracker;
+package com.github.ckblck.armoury.tracker;
 
-import com.github.ckblck.armor.tracker.calculation.Method;
-import com.github.ckblck.armor.tracker.calculation.piece.ArmorPiece;
+import com.github.ckblck.armoury.tracker.calculation.Method;
+import com.github.ckblck.armoury.tracker.calculation.piece.ArmorPiece;
 import lombok.Getter;
 import lombok.ToString;
 import org.apache.commons.lang.ArrayUtils;

@@ -1,4 +1,4 @@
-package com.github.ckblck.armor.tracker.calculation.piece;
+package com.github.ckblck.armoury.tracker.calculation.piece;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,6 @@
-package com.github.ckblck.armor.listeners;
+package com.github.ckblck.armoury.listeners;
 
-import com.github.ckblck.armor.hooks.ApiDispatcher;
+import com.github.ckblck.armoury.hooks.ApiDispatcher;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

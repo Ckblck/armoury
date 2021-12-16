@@ -1,4 +1,4 @@
-package com.github.ckblck.armor.listeners;
+package com.github.ckblck.armoury.listeners;
 
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
@@ -7,8 +7,8 @@ import com.comphenix.protocol.events.PacketAdapter;
 import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.events.PacketEvent;
 import com.comphenix.protocol.wrappers.WrappedAttribute;
-import com.github.ckblck.armor.tracker.Tracker;
-import com.github.ckblck.armor.tracker.TrackerController;
+import com.github.ckblck.armoury.tracker.Tracker;
+import com.github.ckblck.armoury.tracker.TrackerController;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;

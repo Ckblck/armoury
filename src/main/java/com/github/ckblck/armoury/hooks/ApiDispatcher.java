@@ -1,8 +1,8 @@
-package com.github.ckblck.armor.hooks;
+package com.github.ckblck.armoury.hooks;
 
-import com.github.ckblck.armor.event.PlayerArmorChangeEvent;
-import com.github.ckblck.armor.hooks.api.ArmorEquipListenable;
-import com.github.ckblck.armor.tracker.calculation.piece.ArmorPiece;
+import com.github.ckblck.armoury.event.PlayerArmorChangeEvent;
+import com.github.ckblck.armoury.hooks.api.ArmorEquipListenable;
+import com.github.ckblck.armoury.tracker.calculation.piece.ArmorPiece;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;

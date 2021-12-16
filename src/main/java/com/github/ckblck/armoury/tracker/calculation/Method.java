@@ -1,7 +1,7 @@
-package com.github.ckblck.armor.tracker.calculation;
+package com.github.ckblck.armoury.tracker.calculation;
 
-import com.github.ckblck.armor.tracker.calculation.piece.ArmorPiece;
-import com.github.ckblck.armor.tracker.calculation.piece.ArmorSlot;
+import com.github.ckblck.armoury.tracker.calculation.piece.ArmorPiece;
+import com.github.ckblck.armoury.tracker.calculation.piece.ArmorSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
 

@@ -1,10 +1,10 @@
-package com.github.ckblck.armor;
+package com.github.ckblck.armoury;
 
-import com.github.ckblck.armor.hooks.ApiDispatcher;
-import com.github.ckblck.armor.listeners.Interceptor;
-import com.github.ckblck.armor.listeners.JoinQuitListener;
-import com.github.ckblck.armor.listeners.PluginDisableListener;
-import com.github.ckblck.armor.tracker.TrackerController;
+import com.github.ckblck.armoury.hooks.ApiDispatcher;
+import com.github.ckblck.armoury.listeners.Interceptor;
+import com.github.ckblck.armoury.listeners.JoinQuitListener;
+import com.github.ckblck.armoury.listeners.PluginDisableListener;
+import com.github.ckblck.armoury.tracker.TrackerController;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Bukkit;

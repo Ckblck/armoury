@@ -1,6 +1,6 @@
-package com.github.ckblck.armor.event;
+package com.github.ckblck.armoury.event;
 
-import com.github.ckblck.armor.tracker.calculation.piece.ArmorPiece;
+import com.github.ckblck.armoury.tracker.calculation.piece.ArmorPiece;
 import lombok.Getter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
