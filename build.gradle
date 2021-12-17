@@ -1,6 +1,7 @@
 plugins {
     id 'com.github.johnrengelman.shadow' version '6.1.0'
     id 'java-library'
+    id 'maven-publish'
 }
 
 group 'com.github.ckblck'
@@ -17,7 +18,7 @@ tasks.withType(JavaCompile) {
 }
 
 compileJava {
-    excludes = ['**/Testing.java'] // Testing purposes.
+    excludes = ['**/Testing.java', '**/plugin.yml'] // Testing purposes.
 }
 
 repositories {

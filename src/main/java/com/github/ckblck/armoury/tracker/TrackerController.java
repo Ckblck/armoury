@@ -38,6 +38,11 @@ public class TrackerController {
         trackedPlayers.remove(player.getUniqueId());
     }
 
+    /**
+     * Returns the tracker instance of a specific
+     * player.
+     */
+
     public Tracker getTracker(Player player) {
         return trackedPlayers.get(player.getUniqueId());
     }

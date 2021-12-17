@@ -25,6 +25,9 @@ public class Bootstrap {
     @Getter
     private ApiDispatcher dispatcher;
 
+    @Getter
+    private TrackerController trackerController;
+
     /**
      * Starts listening
      * and dispatching armor events.
@@ -34,8 +37,7 @@ public class Bootstrap {
         PluginManager pluginManager = Bukkit.getPluginManager();
 
         dispatcher = new ApiDispatcher();
-
-        TrackerController trackerController = new TrackerController(this);
+        trackerController = new TrackerController(this);
 
         pluginManager.registerEvents(new JoinQuitListener(trackerController), plugin);
         pluginManager.registerEvents(new PluginDisableListener(dispatcher), plugin);
