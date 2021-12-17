@@ -18,6 +18,7 @@ public enum ArmorSlot {
 
     @Getter
     private final int slotId;
+    @Getter
     private final EnumWrappers.ItemSlot itemSlot;
     private final Predicate<Material> condition;
 
