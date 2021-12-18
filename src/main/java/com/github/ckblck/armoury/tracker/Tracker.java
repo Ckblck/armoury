@@ -69,6 +69,10 @@ public class Tracker {
                 trackerController.callApi(player, armorPieces));
     }
 
+    public Optional<Player> getPlayer() {
+        return Optional.ofNullable(Bukkit.getPlayer(player));
+    }
+
     private void setSavedArmor(ItemStack[] savedArmor) {
         this.savedArmor = deepCloneArray(savedArmor);
     }
@@ -88,10 +92,6 @@ public class Tracker {
         ArrayUtils.reverse(armorContents);
 
         return armorContents;
-    }
-
-    private Optional<Player> getPlayer() {
-        return Optional.ofNullable(Bukkit.getPlayer(player));
     }
 
     private ItemStack[] deepCloneArray(ItemStack[] itemArray) {

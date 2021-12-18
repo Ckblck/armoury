@@ -3,7 +3,6 @@ package com.github.ckblck.armoury;
 import com.github.ckblck.armoury.hooks.ApiDispatcher;
 import com.github.ckblck.armoury.listeners.Interceptor;
 import com.github.ckblck.armoury.listeners.JoinQuitListener;
-import com.github.ckblck.armoury.listeners.PluginDisableListener;
 import com.github.ckblck.armoury.tracker.TrackerController;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +18,7 @@ import org.bukkit.plugin.PluginManager;
  */
 
 @RequiredArgsConstructor
-public class Bootstrap {
+public class Armoury {
     private final Plugin plugin;
 
     @Getter
@@ -40,7 +39,6 @@ public class Bootstrap {
         trackerController = new TrackerController(this);
 
         pluginManager.registerEvents(new JoinQuitListener(trackerController), plugin);
-        pluginManager.registerEvents(new PluginDisableListener(dispatcher), plugin);
 
         new Interceptor(plugin, trackerController);
     }

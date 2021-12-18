@@ -1,6 +1,6 @@
 package com.github.ckblck.armoury.tracker;
 
-import com.github.ckblck.armoury.Bootstrap;
+import com.github.ckblck.armoury.Armoury;
 import com.github.ckblck.armoury.hooks.ApiDispatcher;
 import com.github.ckblck.armoury.tracker.calculation.piece.ArmorPiece;
 import org.bukkit.Bukkit;
@@ -14,8 +14,8 @@ public class TrackerController {
     private final Map<UUID, Tracker> trackedPlayers = new HashMap<>();
     private final ApiDispatcher dispatcher;
 
-    public TrackerController(Bootstrap bootstrap) {
-        this.dispatcher = bootstrap.getDispatcher();
+    public TrackerController(Armoury armoury) {
+        this.dispatcher = armoury.getDispatcher();
 
         Bukkit.getOnlinePlayers().forEach(this::track); // Reload compatibility.
     }

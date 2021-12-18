@@ -32,7 +32,7 @@ public enum Method {
             return UNCHANGED;
         } else {
             // Player has had his armor overwritten with a different armor piece, this can occur when using Spigot-API methods.
-            // OR: He was attacked and suffered from durability damage
+            // OR: He was attacked and suffered from durability damage.
 
             if (previousPiece.hasItemMeta() && currentPiece.hasItemMeta()) {
                 Damageable previousPieceItemMeta = (Damageable) previousPiece.getItemMeta();
@@ -58,14 +58,12 @@ public enum Method {
     }
 
     /**
-     * Finds the armor that have been modified
+     * Finds the armor pieces that have been modified
      * by differencing it with the previous copy.
      * <p>
      * Having an old copy of (DIAMOND_HELMET, AIR, AIR, AIR)
      * And a current copy of (AIR, AIR, AIR, AIR),
      * We may deduce that the {@link Method} of the ArmorPiece[0] is {@link Method#REMOVE}, the remaining ones are {@link Method#UNCHANGED}.
-     * <p>
-     * NOTE: Programmatic armor modification will be labeled as {@link Method#WEAR}.
      *
      * @param previousArmor previous armor the player was wearing
      * @param currentArmor  current armor the player is wearing
