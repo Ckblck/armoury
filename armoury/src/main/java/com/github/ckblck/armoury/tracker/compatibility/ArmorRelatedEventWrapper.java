@@ -1,8 +1,8 @@
-package com.github.ckblck.armoury.tracker.calculation.compatibility;
+package com.github.ckblck.armoury.tracker.compatibility;
 
+import com.github.ckblck.api.piece.ArmorSlot;
 import com.github.ckblck.armoury.tracker.Tracker;
 import com.github.ckblck.armoury.tracker.TrackerController;
-import com.github.ckblck.armoury.tracker.calculation.piece.ArmorSlot;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;

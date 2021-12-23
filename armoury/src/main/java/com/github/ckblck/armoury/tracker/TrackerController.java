@@ -1,8 +1,8 @@
 package com.github.ckblck.armoury.tracker;
 
+import com.github.ckblck.api.hooks.ApiDispatcher;
+import com.github.ckblck.api.piece.ArmorPiece;
 import com.github.ckblck.armoury.Armoury;
-import com.github.ckblck.armoury.hooks.ApiDispatcher;
-import com.github.ckblck.armoury.tracker.calculation.piece.ArmorPiece;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 

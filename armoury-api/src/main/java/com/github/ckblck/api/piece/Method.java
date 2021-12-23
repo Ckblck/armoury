@@ -1,7 +1,5 @@
-package com.github.ckblck.armoury.tracker.calculation;
+package com.github.ckblck.api.piece;
 
-import com.github.ckblck.armoury.tracker.calculation.piece.ArmorPiece;
-import com.github.ckblck.armoury.tracker.calculation.piece.ArmorSlot;
 import com.github.ckblck.commons.Provider;
 import com.github.ckblck.compatibility.Compatible;
 import org.bukkit.inventory.ItemStack;

@@ -1,6 +1,5 @@
-package com.github.ckblck.armoury.tracker.calculation.piece;
+package com.github.ckblck.api.piece;
 
-import com.github.ckblck.armoury.tracker.calculation.Method;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.inventory.ItemStack;

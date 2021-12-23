@@ -1,4 +1,4 @@
-package com.github.ckblck.armoury.tracker.calculation.piece;
+package com.github.ckblck.api.piece;
 
 import com.comphenix.protocol.wrappers.EnumWrappers;
 import lombok.Getter;

@@ -63,10 +63,10 @@ public class Compatible1_9 extends Compatible<BlockDispenseEvent> {
 
                     int differenceY = locationBlockY - blockY;
 
-                    boolean validDifference = (differenceY < MAXIMUM_Y_POSITIVE_DIFFERENCE)
+                    boolean withinBounds = (differenceY < MAXIMUM_Y_POSITIVE_DIFFERENCE)
                             && (differenceY > MAXIMUM_Y_NEGATIVE_DIFFERENCE);
 
-                    return sameXZLocation && validDifference;
+                    return sameXZLocation && withinBounds;
                 })
                 .filter(player -> {
                     ItemStack[] armorContents = player.getEquipment().getArmorContents();
@@ -77,13 +77,13 @@ public class Compatible1_9 extends Compatible<BlockDispenseEvent> {
                 })
                 .collect(Collectors.toSet());
 
-        // This loop makes sure the correct player has the armor event fired.
+        // This loop makes sure the correct player has the armour event fired.
         for (Player player : playerInvolved) {
             DispenserArmorEquipWrapper wrapper = new DispenserArmorEquipWrapper(block, item, player);
 
             Result result = eventCallback.apply(wrapper);
 
-            if (result == Result.HANDLED) { // Result = handled, meaning that the right player was found.
+            if (result == Result.HANDLED) { // Result == HANDLED, meaning that the right player was found.
                 break;
             }
         }

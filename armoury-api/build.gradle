@@ -1,0 +1,7 @@
+dependencies {
+    compileOnly group: 'com.comphenix.protocol', name: 'ProtocolLib', version: '4.7.0'
+    compileOnly group: 'org.spigotmc', name: 'spigot-api', version: '1.9.4-R0.1-SNAPSHOT'
+
+    implementation project(':armoury-compatibility:commons')
+    implementation project(':armoury-compatibility')
+}

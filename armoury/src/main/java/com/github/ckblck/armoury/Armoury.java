@@ -1,10 +1,10 @@
 package com.github.ckblck.armoury;
 
-import com.github.ckblck.armoury.hooks.ApiDispatcher;
+import com.github.ckblck.api.hooks.ApiDispatcher;
 import com.github.ckblck.armoury.listeners.Interceptor;
 import com.github.ckblck.armoury.listeners.JoinQuitListener;
 import com.github.ckblck.armoury.tracker.TrackerController;
-import com.github.ckblck.armoury.tracker.calculation.compatibility.DispenserWrapper;
+import com.github.ckblck.armoury.tracker.compatibility.DispenserWrapper;
 import com.github.ckblck.commons.Provider;
 import com.github.ckblck.compatibility.Compatible;
 import lombok.Getter;

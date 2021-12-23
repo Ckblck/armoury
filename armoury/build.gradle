@@ -8,4 +8,5 @@ dependencies {
 
     implementation project(':armoury-compatibility:commons')
     implementation project(':armoury-compatibility')
+    implementation project(':armoury-api')
 }

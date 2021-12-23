@@ -1,6 +1,6 @@
-package com.github.ckblck.armoury.hooks.api;
+package com.github.ckblck.api.hooks.api;
 
-import com.github.ckblck.armoury.tracker.calculation.piece.ArmorPiece;
+import com.github.ckblck.api.piece.ArmorPiece;
 import org.bukkit.entity.Player;
 
 @FunctionalInterface

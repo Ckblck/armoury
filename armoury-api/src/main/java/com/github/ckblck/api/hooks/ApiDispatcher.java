@@ -1,8 +1,8 @@
-package com.github.ckblck.armoury.hooks;
+package com.github.ckblck.api.hooks;
 
-import com.github.ckblck.armoury.event.PlayerArmorChangeEvent;
-import com.github.ckblck.armoury.hooks.api.ArmorEquipListenable;
-import com.github.ckblck.armoury.tracker.calculation.piece.ArmorPiece;
+import com.github.ckblck.api.hooks.api.ArmorEquipListenable;
+import com.github.ckblck.api.hooks.event.PlayerArmorChangeEvent;
+import com.github.ckblck.api.piece.ArmorPiece;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -42,7 +42,7 @@ public class ApiDispatcher {
     }
 
     /**
-     * Dispatches an armor event and calls every {@link ArmorEquipListenable}.
+     * Dispatches an armour event and calls every {@link ArmorEquipListenable}.
      * <p>
      * Note: NO PLUGIN MUST INVOKE THIS METHOD.
      *
