@@ -1,1 +1,9 @@
-rootProject.name = 'armoury'
+rootProject.name = 'armoury-lib'
+
+include ':armoury'
+include ':armoury-api'
+include ':armoury-compatibility'
+include ':armoury-compatibility:commons'
+include ':armoury-compatibility:armoury-compatibility-1_9'
+include ':armoury-compatibility:armoury-compatibility-1_13'
+include ':armoury-compatibility:armoury-compatibility-1_13_2'

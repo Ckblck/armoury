@@ -118,6 +118,5 @@ run/
 !gradle-wrapper.jar
 
 # Testing only files
-/src/main/java/com/github/ckblck/armor/Testing.java
-/src/test/
-/src/main/resources
+armoury/src/main/java/com/github/ckblck/armoury/Plugin.java
+armoury/src/main/resources

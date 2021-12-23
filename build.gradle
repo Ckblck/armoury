@@ -1,47 +1,56 @@
 plugins {
-    id 'com.github.johnrengelman.shadow' version '6.1.0'
+    id 'com.github.johnrengelman.shadow' version '7.1.1'
     id 'java-library'
-    id 'maven-publish'
+    id 'idea'
+    id 'java'
 }
 
-group 'com.github.ckblck'
-version '1.0-SNAPSHOT'
-
 java {
-    withSourcesJar()
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
+    withSourcesJar()
+}
+
+idea {
+    module {
+        downloadSources = true
+    }
 }
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-compileJava {
-    excludes = ['**/Testing.java', '**/plugin.yml'] // Testing purposes.
-}
+allprojects {
+    apply plugin: 'com.github.johnrengelman.shadow'
+    apply plugin: 'java-library'
+    apply plugin: 'idea'
+    apply plugin: 'java'
 
-repositories {
-    mavenCentral()
-    mavenLocal()
+    group 'com.github.ckblck'
+    version '1.0-SNAPSHOT'
 
-    maven {
-        url 'https://repo.dmulloy2.net/repository/public/'
+    compileJava {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+        options.encoding = "UTF-8"
     }
 
-    maven {
-        url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    repositories {
+        mavenCentral()
+        mavenLocal()
+
+        maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+        maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+        maven { url = 'https://oss.sonatype.org/content/repositories/central' }
     }
+
+    dependencies {
+        compileOnly group: 'org.jetbrains', name: 'annotations', version: '23.0.0'
+        compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
+
+        annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
+    }
+
+    build.dependsOn shadowJar
 }
-
-dependencies {
-    compileOnly group: 'org.jetbrains', name: 'annotations', version: '23.0.0'
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
-    compileOnly group: 'com.comphenix.protocol', name: 'ProtocolLib', version: '4.7.0'
-    compileOnly group: 'org.spigotmc', name: 'spigot-api', version: '1.16.5-R0.1-SNAPSHOT'
-
-    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
-}
-
-
-build.dependsOn shadowJar
