@@ -31,6 +31,7 @@ public enum ArmorSlot {
     private final int rawSlot;
     @Getter
     private final EnumWrappers.ItemSlot itemSlot;
+
     private final Predicate<Material> condition;
 
     public static boolean isLeftClickWearable(@NotNull ItemStack item) {

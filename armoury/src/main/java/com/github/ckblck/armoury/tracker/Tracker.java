@@ -78,6 +78,18 @@ public class Tracker {
     }
 
     /**
+     * Sets a new armor piece
+     * at a specific slot.
+     *
+     * @param slot     slot where to set the new piece
+     * @param newPiece piece to set at slot's index
+     */
+
+    public void setSavedPieceAtSlot(ArmorSlot slot, ItemStack newPiece) {
+        getSavedArmor()[slot.getSlotId()] = newPiece;
+    }
+
+    /**
      * Gets the current armor the player is wearing
      * and updates it by differencing it with {@link #savedArmor}.
      */
@@ -92,7 +104,7 @@ public class Tracker {
 
         try {
             armorPieces = Method.findModifiedArmor(savedArmor, currentArmor);
-        } catch (IllegalArgumentException ignored) { // Explanation in findModifiedArmor method.
+        } catch (IllegalArgumentException ignored) { // Explanation provided in findModifiedArmor method.
             return;
         }
 
