@@ -13,7 +13,7 @@ public class ArmorPiece {
     @Nullable
     private final ItemStack piece;
     private final ArmorSlot slot;
-    private final Method method;
+    private final ModificationType modificationType;
 
     /**
      * Returns true if the armour pieces have been damaged.
@@ -23,7 +23,7 @@ public class ArmorPiece {
      */
 
     public boolean hasBeenDamaged() {
-        return method == Method.DAMAGED;
+        return modificationType == ModificationType.DAMAGED;
     }
 
 }

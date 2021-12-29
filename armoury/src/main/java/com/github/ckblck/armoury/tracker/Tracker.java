@@ -2,7 +2,7 @@ package com.github.ckblck.armoury.tracker;
 
 import com.github.ckblck.api.piece.ArmorPiece;
 import com.github.ckblck.api.piece.ArmorSlot;
-import com.github.ckblck.api.piece.Method;
+import com.github.ckblck.armoury.logic.ModifiedArmor;
 import lombok.Getter;
 import lombok.ToString;
 import org.apache.commons.lang.ArrayUtils;
@@ -102,8 +102,10 @@ public class Tracker {
         ItemStack[] savedArmor = getSavedArmor();
         ArmorPiece[] armorPieces;
 
+        ModifiedArmor modifiedArmor = new ModifiedArmor(savedArmor, currentArmor);
+
         try {
-            armorPieces = Method.findModifiedArmor(savedArmor, currentArmor);
+            armorPieces = modifiedArmor.findModifiedArmor();
         } catch (IllegalArgumentException ignored) { // Explanation provided in findModifiedArmor method.
             return;
         }

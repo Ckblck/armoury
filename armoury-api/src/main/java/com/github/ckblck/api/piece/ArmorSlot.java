@@ -48,7 +48,8 @@ public enum ArmorSlot {
      */
 
     public static Optional<ArmorSlot> findSlot(Material material) {
-        return Arrays.stream(VALUES)
+        return Arrays
+                .stream(VALUES)
                 .filter(armorSlot -> armorSlot.condition.test(material))
                 .findAny();
     }
@@ -83,7 +84,8 @@ public enum ArmorSlot {
      */
 
     public static Optional<ArmorSlot> findBySlotId(int slotId) {
-        return Arrays.stream(VALUES)
+        return Arrays
+                .stream(VALUES)
                 .filter(armorSlot -> armorSlot.slotId == slotId)
                 .findAny();
     }
@@ -96,7 +98,8 @@ public enum ArmorSlot {
      */
 
     public static Optional<ArmorSlot> findByRawSlot(int rawSlot) {
-        return Arrays.stream(VALUES)
+        return Arrays
+                .stream(VALUES)
                 .filter(armorSlot -> armorSlot.rawSlot == rawSlot)
                 .findAny();
     }
