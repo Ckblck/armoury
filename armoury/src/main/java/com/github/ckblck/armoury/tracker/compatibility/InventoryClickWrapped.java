@@ -3,6 +3,7 @@ package com.github.ckblck.armoury.tracker.compatibility;
 import com.github.ckblck.api.piece.ArmorSlot;
 import com.github.ckblck.armoury.tracker.Tracker;
 import com.github.ckblck.armoury.tracker.TrackerController;
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -34,68 +35,73 @@ public class InventoryClickWrapped extends ArmorRelatedEventWrapper<InventoryCli
 
     @Override
     protected void run(InventoryClickEvent event) {
-        InventoryAction action = event.getAction();
+        try {
+            InventoryAction action = event.getAction();
 
-        if (action == InventoryAction.NOTHING)
-            return;
+            if (action == InventoryAction.NOTHING)
+                return;
 
-        player = (Player) event.getWhoClicked();
-        Inventory clickedInventory = event.getClickedInventory();
-        PlayerInventory playerInventory = player.getInventory();
+            player = (Player) event.getWhoClicked();
+            Inventory clickedInventory = event.getClickedInventory();
+            PlayerInventory playerInventory = player.getInventory();
 
-        if (playerInventory != clickedInventory)
-            return;
+            if (playerInventory != clickedInventory)
+                return;
 
-        InventoryType topInventory = player.getOpenInventory().getTopInventory().getType();
+            InventoryType topInventory = player.getOpenInventory().getTopInventory().getType();
 
-        if (topInventory != InventoryType.CRAFTING)
-            return;
+            if (topInventory != InventoryType.CRAFTING)
+                return;
 
-        cursorItem = event.getCursor();
-        currentItem = event.getCurrentItem();
+            cursorItem = event.getCursor();
+            currentItem = event.getCurrentItem();
 
-        if (currentItem == null)
-            return;
+            if (currentItem == null)
+                return;
 
-        rawSlot = event.getRawSlot();
-        Material cursorItemType = cursorItem.getType();
-        Material currentItemType = currentItem.getType();
+            rawSlot = event.getRawSlot();
+            Material cursorItemType = cursorItem.getType();
+            Material currentItemType = currentItem.getType();
 
-        cursorItemSlot = ArmorSlot.findSlot(cursorItemType)
-                .orElse(null);
-        currentItemSlot = ArmorSlot.findSlot(currentItemType)
-                .orElse(null);
+            cursorItemSlot = ArmorSlot.findSlot(cursorItemType)
+                    .orElse(null);
+            currentItemSlot = ArmorSlot.findSlot(currentItemType)
+                    .orElse(null);
 
-        InventoryType.SlotType slotType = event.getSlotType();
+            InventoryType.SlotType slotType = event.getSlotType();
 
-        boolean armorSlotsWereClicked = slotType == InventoryType.SlotType.ARMOR;
+            boolean armorSlotsWereClicked = slotType == InventoryType.SlotType.ARMOR;
 
-        if (armorSlotsWereClicked) { // Player clicked armor slot.
-            boolean cursorEmpty = nullOrAir(cursorItem);
+            if (armorSlotsWereClicked) { // Player clicked armor slot.
+                boolean cursorEmpty = nullOrAir(cursorItem);
 
-            if (cursorEmpty) { // Player is clicking over an item (taking out the armour piece).
-                handleRemove();
-            } else if (nullOrAir(currentItem)) {
-                // Player's cursor is not empty, but the clicked armour slot is. (when in survival mode)
-                // This condition is also triggered when shift-clicking in creative mode.
-                // When in creative mode, even if the player's cursor IS EMPTY in-game, cursorEmpty actually returns false.
-                // This is nonsensical, but this is the unfortunate way it works.
-                handleWear();
-            } else { // Both the cursor and the clicked slot have an item.
-                handleReplace();
+                if (cursorEmpty) { // Player is clicking over an item (taking out the armour piece).
+                    handleRemove();
+                } else if (nullOrAir(currentItem)) {
+                    // Player's cursor is not empty, but the clicked armour slot is. (when in survival mode)
+                    // This condition is also triggered when shift-clicking in creative mode.
+                    // When in creative mode, even if the player's cursor IS EMPTY in-game, cursorEmpty actually returns false.
+                    // This is nonsensical, but this is the unfortunate way it works.
+                    handleWear();
+                } else { // Both the cursor and the clicked slot have an item.
+                    handleReplace();
+                }
+
+                return;
             }
 
-            return;
+            boolean couldBeShiftClick = slotType == InventoryType.SlotType.CONTAINER
+                    || slotType == InventoryType.SlotType.QUICKBAR;
+
+            // Shift-click handling only.
+            if (couldBeShiftClick) {
+                handleShiftClick(event);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            plugin.getLogger().warning("Error: " + new ReflectionToStringBuilder(event).toString());
         }
-
-        boolean couldBeShiftClick = slotType == InventoryType.SlotType.CONTAINER
-                || slotType == InventoryType.SlotType.QUICKBAR;
-
-        // Shift-click handling only.
-        if (couldBeShiftClick) {
-            handleShiftClick(event);
-        }
-
     }
 
     private void handleReplace() {
