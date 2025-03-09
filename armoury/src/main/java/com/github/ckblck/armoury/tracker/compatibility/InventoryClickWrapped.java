@@ -61,11 +61,10 @@ public class InventoryClickWrapped extends ArmorRelatedEventWrapper<InventoryCli
 
             rawSlot = event.getRawSlot();
             Material cursorItemType = cursorItem.getType();
-            Material currentItemType = currentItem.getType();
 
             cursorItemSlot = ArmorSlot.findSlot(cursorItemType)
                     .orElse(null);
-            currentItemSlot = ArmorSlot.findSlot(currentItemType)
+            currentItemSlot = ArmorSlot.findByRawSlot(event.getRawSlot())
                     .orElse(null);
 
             InventoryType.SlotType slotType = event.getSlotType();
